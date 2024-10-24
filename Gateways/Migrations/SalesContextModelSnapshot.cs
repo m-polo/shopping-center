@@ -3,7 +3,6 @@ using System;
 using EFCore.Repositories.DataContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,12 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EFCore.Repositories.Migrations
 {
-    [DbContext(typeof(Context))]
-    [Migration("20241024114710_Add_Paymant_Table")]
-    partial class Add_Paymant_Table
+    [DbContext(typeof(SalesContext))]
+    partial class SalesContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +48,7 @@ namespace EFCore.Repositories.Migrations
                         .HasColumnType("character varying(30)");
 
                     b.Property<DateTime>("OrderDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()

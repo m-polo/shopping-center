@@ -14,6 +14,9 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
 
+app.MapGet("/", () => Results.Ok("API working"))
+.WithName("Status");
+
 app.MapPost("/createOrder",
                 async (CreateOrderDTO order,
                 ICreateOrderController controller) =>
