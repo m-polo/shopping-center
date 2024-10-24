@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sales.Controllers\Sales.Controllers.csproj" />
+    <ProjectReference Include="..\Sales.Presenters\Sales.Presenters.csproj" />
+    <ProjectReference Include="..\Gateways\EFCore.Repositories.csproj" />
+    <ProjectReference Include="..\Sales.UseCases\Sales.UseCases.csproj" />
+  </ItemGroup>
+</Project>
