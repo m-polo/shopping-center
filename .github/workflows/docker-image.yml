@@ -1,0 +1,27 @@
+name: Docker Image Artifact
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Build the Docker image
+      run: docker build -f Sales.WebApi/Dockerfile -t shopping-center-api:latest .
+
+    - name: Generate tar file
+      run: docker save --output shopping-center-api.tar shopping-center-api:latest
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.4.3
+      with:
+        name: shopping-center-api_latest
+        path: shopping-center-api.tar
