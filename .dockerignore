@@ -1,0 +1,8 @@
+﻿*/bin
+*/obj
+.dockerignore
+.env
+.git
+.gitignore
+.vs
+**/.toolstarget

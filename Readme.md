@@ -4,8 +4,8 @@ Shopping center is an example of API following Clean Architecture principles.
 
 It includes everything you need, including:
 
-- [.NET Core Minimal API](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-8.0) for the frontend
-- [EF](https://learn.microsoft.com/es-es/ef/) as ORM
+- [.NET Core Minimal API](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-7.0) for the frontend
+- [Entity Framework](https://learn.microsoft.com/es-es/ef/) as ORM
 - [Swagger](https://swagger.io) for API documentation
 - [PostgreSQL](https://www.postgresql.org/) as database
 - [Docker](https://www.docker.com/) for containerization
@@ -60,7 +60,7 @@ Or build shopping-center solution manually using Vs.
 To apply migrations to database, run the following command:
 
 ```sh
-dotnet ef database update add --startup-project Sales.WebApi --project ./Gateways/EFCore.Repositories.csproj --context SalesContext
+dotnet ef database update --startup-project Sales.WebApi --project ./Gateways/EFCore.Repositories.csproj --context SalesContext
 ```
 
 To add migrations, run the following command:
@@ -78,3 +78,18 @@ dotnet run -p Sales.WebApi
 ```
 
 Or set Sales.WebApi as startup project from VS and run it.
+
+### Build and run API docker image
+
+To containerize the app, run the following commands:
+
+```sh
+docker build -f Sales.WebApi/Dockerfile -t shopping-center-api .
+docker run -p 5000:80 --name shopping-center-api shopping-center-api
+ ```
+
+ Using docker compose:
+
+ ```sh
+docker compose up --build
+ ```
